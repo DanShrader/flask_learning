@@ -12,6 +12,8 @@ db = SQLAlchemy(app)
 def create_app():
     from main import routes
     from main.routes import main
+    from main.errors.handlers import errors
     app.register_blueprint(main)
+    app.register_blueprint(errors)
     return app
     
