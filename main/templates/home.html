@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <a class="btn btn-info" href="{{ url_for('main.new') }}">Add new record +</a>
+
+  <h2>Topics</h2>
+  <div>
+    {% for entry in another %}
+      <div class="row pt-2 content-section">
+        <div class="col-2">
+          {{entry.id}}
+        </div>
+        <div class="col-2">
+          {{entry.grouping}}
+        </div>
+        <div class="col-2">
+        {{entry.title}}
+        </div>
+        <a class="btn btn-info col-2" href="{{ url_for('main.update', id=entry.id) }}">Edit</a>
+        <form  class="col-3" action="{{ url_for('main.delete', id=entry.id) }}" method="POST">
+          <input class="btn btn-danger" type="submit" value="Delete">
+        </form>
+      </div>
+      {% endfor %}
+  </div>
+
+{% endblock %}
